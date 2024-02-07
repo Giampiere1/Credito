@@ -70,7 +70,10 @@ public class CreditRepositoryImpl implements CreditRepository {
                 .append("Amount", creditDTO.getAmount())
                 .append("Consumed", 0)
                 .append("HasCard", creditDTO.getHasCard())
-                .append("CardNumber", creditDTO.getCardNumber());
+                .append("CardNumber", creditDTO.getCardNumber())
+                .append("Estado", creditDTO.getEstado())
+                .append("StarDate", creditDTO.getStartDate())
+                .append("FinDate", creditDTO.getEndDate());
         collection.insertOne(document);
         System.out.println("DOCUMENTO CREADO");
         System.out.println(document.get("_id").toString());

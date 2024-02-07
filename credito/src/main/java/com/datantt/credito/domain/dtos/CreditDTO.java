@@ -1,11 +1,14 @@
 package com.datantt.credito.domain.dtos;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 @Data
 @Builder
@@ -33,5 +36,17 @@ public class CreditDTO {
 
     @JsonProperty("CardNumber")
     public String CardNumber;
+
+    @JsonFormat(pattern="MM/dd/yyyy")
+    @JsonProperty("StartDate")
+    public Date StartDate;
+
+    @JsonFormat(pattern="MM/dd/yyyy")
+    @JsonProperty("EndDate")
+    public Date EndDate;
+
+    @JsonProperty("Estado")
+    public String Estado;
+
 
 }

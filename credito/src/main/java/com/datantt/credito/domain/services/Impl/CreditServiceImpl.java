@@ -50,6 +50,20 @@ public class CreditServiceImpl implements CreditService {
                 return false;
             }
         }
+        if (creditDTO.getTypeCode()
+                .equalsIgnoreCase(Constantes.TIPOCLIENTE_EMPRESARIAL)) {
+            System.out.println("TIPOCLIENTE_PERSONAL");
+            CustomerDTO customer = new CustomerDTO();
+            customer.set_id(creditDTO.getCustomer_Id());
+            List<Document> documents = creditRepository.getList(customer);
+            List<CreditDTO> creditos = Util.mapTo(documents, CreditDTO.class);
+            boolean debe=creditos.stream().anyMatch(x->x.Estado.equals("NP"));
+            if (debe) {
+                System.out.println("Debe un credito");
+                return false;
+            }
+
+        }
         result = creditRepository.create(creditDTO);
         return result;
     }
